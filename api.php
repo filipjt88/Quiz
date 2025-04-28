@@ -1,6 +1,6 @@
 <?php
 
-header("Content-Type: application/json");
+header('Content-Type: application/json');
 include 'core/db.php';
 
 // Provera koju akciju saljemo
@@ -17,16 +17,16 @@ if($action === 'get_questions') {
 if($action === 'check_answer' && $_SERVER['REQUEST_METHOD'] === "POST") {
     $data = json_decode(file_get_contents("php://input"), true);
 
-    if(!isset($data['qusetion_id']) || !isset($data['selected_option'])) {
+    if(!isset($data['question_id']) || !isset($data['selected_option'])) {
         echo json_encode(["success" => false, 'message' => 'Nedostaju podaci.']);
         exit;
     }
 
-    $questionId = (int) $data['question_id'];
+    $question_id = (int) $data['question_id'];
     $selectedOption = strtoupper($data['selected_option']);
 
     $stmt = $pdo->prepare("SELECT correct_option FROM questions WHERE id = ?");
-    $stmt->execute([$questionId]);
+    $stmt->execute([$question_id]);
     $correct = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if(!$correct) {

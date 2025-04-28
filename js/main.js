@@ -1,4 +1,4 @@
-const quizContainer = document.getElementById('quiz-container');
+const quizContainer   = document.getElementById('quiz-container');
 const resultContainer = document.getElementById('result');
 let questions = [];
 let currentQuestionIndex = 0;
@@ -38,7 +38,7 @@ function showQuestion() {
 
 // Kada kliknes na odgovor
 
-async function submitAnswer(questionId, selectedOption) {
+async function submitAnswer(question_id, selectedOption) {
     try {
         const response = await fetch('api.php?action=check_answer', {
             method: 'POST',
@@ -46,7 +46,7 @@ async function submitAnswer(questionId, selectedOption) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                questionId: questionId,
+                question_id: question_id,
                 selectedOption: selectedOption
             })
         });
