@@ -1,4 +1,4 @@
-*** FullStack Quiz App (PHP, MySQL, JavaScript, Bootstrap 5, API)
+            FullStack Quiz App (PHP, MySQL, JavaScript, Bootstrap 5, API)
 
 *** Description of the project
 
