@@ -41,3 +41,4 @@ if($action === 'check_answer' && $_SERVER['REQUEST_METHOD'] === "POST") {
 
 // Ako akcija nije pronadjena
 echo json_encode(['success' => false, 'message' => 'Nevazeci zahtev!']);
+?>
