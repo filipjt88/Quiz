@@ -7,7 +7,7 @@ include 'core/db.php';
 $action = $_GET['action'] ?? '';
 
 if($action === 'get_questions') {
-    // Vrati sva pitanja
+    // Vrati sva pitanja iz baze podataka
     $stmt = $pdo->query("SELECT id, question, option_a, option_b, option_c, option_d FROM questions");
     $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($questions);

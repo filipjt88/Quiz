@@ -1,8 +1,10 @@
 const quizContainer   = document.getElementById('quiz-container');
 const resultContainer = document.getElementById('result');
+
 let questions = [];
 let currentQuestionIndex = 0;
 let score = 0;
+
 // Ucitavanje pitanja sa servera
 async function loadQuestions() {
     try {
@@ -39,9 +41,7 @@ function showQuestion() {
 }
 
 
-
 // Kada kliknes na odgovor
-
 async function submitAnswer(question_id, selected_option) {
     try {
         const response = await fetch('api.php?action=check_answer', {
@@ -76,5 +76,4 @@ async function submitAnswer(question_id, selected_option) {
         alert("Greska prilikom slanja odgovora.")
     }
 }
-
 loadQuestions();
