@@ -23,7 +23,7 @@ if($action === 'check_answer' && $_SERVER['REQUEST_METHOD'] === "POST") {
     }
 
     $question_id = (int) $data['question_id'];
-    $selectedOption = strtoupper($data['selected_option']);
+    $selected_option = strtoupper($data['selected_option']);
 
     $stmt = $pdo->prepare("SELECT correct_option FROM questions WHERE id = ?");
     $stmt->execute([$question_id]);
@@ -34,7 +34,7 @@ if($action === 'check_answer' && $_SERVER['REQUEST_METHOD'] === "POST") {
         exit;
     }
 
-    $isCorrect = $correct['correct_option'] === $selectedOption;
+    $isCorrect = $correct['correct_option'] === $selected_option;
     echo json_encode(['success' => true, 'correct' => $isCorrect]);
     exit;
 }

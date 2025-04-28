@@ -2,7 +2,7 @@ const quizContainer   = document.getElementById('quiz-container');
 const resultContainer = document.getElementById('result');
 let questions = [];
 let currentQuestionIndex = 0;
-
+let score = 0;
 // Ucitavanje pitanja sa servera
 async function loadQuestions() {
     try {
@@ -16,10 +16,14 @@ async function loadQuestions() {
 
 // Prikaz pitanja
 function showQuestion() {
-    if (currentQuestionIndex >= questions.length) {
-        quizContainer.innerHTML = '<h3>Kviz je završen!</h3>';
+    if(currentQuestionIndex >= questions.length) {
+        quizContainer.innerHTML = `
+            <h3>Kviz je završen!</h3>
+            <p>Tačno si odgovorio na ${score} od ${questions.length} pitanja.</p>
+        `;
         return;
     }
+    
 
     const q = questions[currentQuestionIndex];
 
@@ -38,7 +42,7 @@ function showQuestion() {
 
 // Kada kliknes na odgovor
 
-async function submitAnswer(question_id, selectedOption) {
+async function submitAnswer(question_id, selected_option) {
     try {
         const response = await fetch('api.php?action=check_answer', {
             method: 'POST',
@@ -47,13 +51,14 @@ async function submitAnswer(question_id, selectedOption) {
             },
             body: JSON.stringify({
                 question_id: question_id,
-                selectedOption: selectedOption
+                selected_option: selected_option
             })
         });
 
         const data = await response.json();
         if(data.success) {
             if(data.correct) {
+                score++;
                 resultContainer.innerHTML = '<div class="alert alert-success">Ovo je tacan odogovor!</div>';
             } else {
                 resultContainer.innerHTML = '<div class="alert alert-danger">Ovo je netacan odogovor!</div>';
