@@ -21,7 +21,6 @@ if($action === 'check_answer' && $_SERVER['REQUEST_METHOD'] === "POST") {
         echo json_encode(["success" => false, 'message' => 'Nedostaju podaci.']);
         exit;
     }
-
     $question_id = (int) $data['question_id'];
     $selected_option = strtoupper($data['selected_option']);
 
@@ -33,7 +32,6 @@ if($action === 'check_answer' && $_SERVER['REQUEST_METHOD'] === "POST") {
         echo json_encode(['success' => false, 'message' => 'Pitanje nije pronadjeno.']);
         exit;
     }
-
     $isCorrect = $correct['correct_option'] === $selected_option;
     echo json_encode(['success' => true, 'correct' => $isCorrect]);
     exit;

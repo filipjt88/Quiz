@@ -26,7 +26,6 @@ function showQuestion() {
         return;
     }
     
-
     const q = questions[currentQuestionIndex];
 
     quizContainer.innerHTML = `
@@ -39,7 +38,6 @@ function showQuestion() {
         </div>
     `;
 }
-
 
 // Kada kliknes na odgovor
 async function submitAnswer(question_id, selected_option) {
