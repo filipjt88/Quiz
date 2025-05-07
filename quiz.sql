@@ -1,3 +1,4 @@
+-- Kreiranje tabele
 CREATE TABLE questions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     question TEXT NOT NULL,
