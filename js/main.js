@@ -1,5 +1,7 @@
+// Selectovanje elemenata
 const quizContainer   = document.getElementById('quiz-container');
 const resultContainer = document.getElementById('result');
+
 
 let questions = [];
 let currentQuestionIndex = 0;
@@ -74,4 +76,5 @@ async function submitAnswer(question_id, selected_option) {
         alert("Greska prilikom slanja odgovora.")
     }
 }
+// Pokrece se funckcija loadQuestions();
 loadQuestions();
